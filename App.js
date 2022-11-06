@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { setStatusBarBackgroundColor, StatusBar } from 'expo-status-bar';
-import { ScrollView, ScrollViewBase, StyleSheet, Text, TextInput, View, ViewPagerAndroidBase, Button } from 'react-native';
+import {ScrollView, ScrollViewBase, StyleSheet, Text, TextInput, View, ViewPagerAndroidBase, Button, Image, TouchableOpacity } from 'react-native';
 
  
 //Navegação entre páginas.
@@ -16,11 +16,15 @@ const Readingcode = () => {
        <Stack.Screen
  
        //Rota Página Inicial
-         name="PaginaInicial"
+         name="Pagina Inicial"
          component={PaginaInicial} //Tela que irá
          //Header
          options = {{
-          title:'readingcode'
+          title:'',
+          headerStyle: {
+            backgroundColor: '#262626',
+            display: 'hidden'
+          }
         }}
         />
     
@@ -43,6 +47,25 @@ const Readingcode = () => {
           title: 'readingcode'
         }}
        />
+
+       <Stack.Screen
+       //Rota Css
+        name='Css'
+        component={Css}
+       />
+
+        <Stack.Screen
+        //Rota Javascript
+        name='Javascript'
+        component={Javascript}
+        />
+
+        <Stack.Screen
+        //Rota Primeiro tutorial HTML
+        name='PrimeiroTutorialHtml'
+        component={PrimeiroTutorialHtml}
+       
+        />
      </Stack.Navigator>
    </NavigationContainer>
  );
@@ -52,15 +75,66 @@ const Readingcode = () => {
 const PaginaInicial = ({ navigation }) => {
  
  return (
-   <View style={estilos.pagina_inicial}>
-     <Text>Bem vindo ao readingcode-app versão 1.0</Text>
+   <View style={{
+    flex: 1,
+    backgroundColor: '#2d2d2d',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
+   }}>
+
+    <View style ={{
+       display: 'flex',
+       flexDirection: 'column',
+       alignItems: 'center',
+       justifyContent: 'center',
+       marginBottom: 80
+    }}>
+
+      <Text style={{
+        color: '#28D967',
+        fontSize: 20
+      }}>readingcode</Text>
+
+      <Text style = {{
+        color: '#727171',
+        fontSize: 14
+      }}>app</Text>
+
+    </View>
+      
+     <Image
+     style = {{
+      width: 150,
+      height: 290,
+      marginBottom: 50
+     }}
+      source={{
+        uri:'https://ouch-cdn2.icons8.com/R97QkQ6X-7bNXymb1rZyQBpiJ-3G9AZi4bkPbeA0GSA/rs:fit:256:494/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNTEv/Njc0NmNjYzktYjNl/My00NTFjLWJhZTgt/ZjcyMzJhODNkOWNl/LnBuZw.png'
+      }}
+     />
+
+     <Text style={{
+      color: 'white',
+      fontSize: 22,
+      width: 350,
+      fontStyle: 'bolder',
+      textAlign: 'center',
+      marginBottom: 80
+     }}>Entenda os princípios da tecnologia, comece seus projetos.</Text>
+
+     <View style={estilos.pagina_inicial.botao}>
      <Button
+      color={'#28D967'}
        title='Entrar'
        onPress={() =>
          navigation.navigate('Tutoriais')
       
        }
      />
+     </View>
+     
    </View>
  )
 }
@@ -73,14 +147,16 @@ const Tutoriais = ({navigation, route}) => {
 
      <TextInput
       style={{
+        backgroundColor: '#FFFFFF',
         borderStyle: 'solid',
         borderColor: 'grey',
         borderWidth: 1,
         height: 40,
         width: 380,
-        padding: 5,
+        paddingLeft: 20,
         margin: 50,
         borderRadius: 5,
+        border: 'none'
       }}
 
       placeholder='Digite a tecnologia que deseja aprender'
@@ -90,80 +166,273 @@ const Tutoriais = ({navigation, route}) => {
       display: 'flex',
       flexDirection: 'column'
      }}>
-    
-        <View style={estilos.tutoriais.tecnologia}>
 
-          <View style={estilos.tutoriais.tecnologia.titulo}>
-            <Text style={
-              estilos.tutoriais.tecnologia.titulo.fonte
-              }>Nome da Tecnologia</Text>
+      <View style ={estilos.tutoriais.tecnologias}>
+      <TouchableOpacity style={{
+        width: 100,
+        height: 100,
+        backgroundColor: '#27BF5B',
+        borderRadius: 5,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 20,
+      }}
+      onPress = {() => {
+        navigation.navigate('Html');
+      }}
+      >
+          <Text>HTML</Text>
+      </TouchableOpacity>  
 
-          </View>
+      <TouchableOpacity style={{
+        width: 100,
+        height: 100,
+        backgroundColor: '#27BF5B',
+        borderRadius: 5,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 20,
+      }}
+      
+      onPress = {() => {
+        navigation.navigate('Css');
+      }}>
+          <Text>CSS</Text>
+      </TouchableOpacity> 
 
-          <View style={estilos.tutoriais.tecnologia.botao}>
-            <Button
-              color='#3B3936'
-              title='Ver tutorial'
-              onPress={() =>
-                navigation.navigate('Html')
-              }
-            />
-          </View>
-        </View>
+      <TouchableOpacity style={{
+        width: 100,
+        height: 100,
+        backgroundColor: '#27BF5B',
+        borderRadius: 5,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 20,
+      }}
+      onPress = {() => {
+        navigation.navigate('Javascript');
+      }}
+      >
+          <Text>JavaScript</Text>
 
-        <View style={estilos.tutoriais.tecnologia}>
+          
+      </TouchableOpacity>       
 
-          <View style={estilos.tutoriais.tecnologia.titulo}>
-            <Text style={
-              estilos.tutoriais.tecnologia.titulo.fonte
-              }>Nome da Tecnologia</Text>
+      </View>
 
-          </View>
-
-          <View style={estilos.tutoriais.tecnologia.botao}>
-            <Button
-              color='#3B3936'
-              title='Ver tutorial'
-              onPress={() =>
-                alert('Estamos em manutenção.')
-              }
-            />
-          </View>
-        </View>
-
-        <View style={estilos.tutoriais.tecnologia}>
-
-          <View style={estilos.tutoriais.tecnologia.titulo}>
-            <Text style={
-              estilos.tutoriais.tecnologia.titulo.fonte
-              }>Nome da Tecnologia</Text>
-
-          </View>
-
-          <View style={estilos.tutoriais.tecnologia.botao}>
-            <Button
-              color='#3B3936'
-              title='Ver tutorial'
-              onPress={() =>
-                alert('Estamos em manutenção.')
-              }
-            />
-          </View>
-        </View>
-
+      
      </ScrollView>
      
    </View>
  )
 }
  
-
+//Página de tutoriais HTML
 const Html = ({navigation, route}) => {
 
   return (
     <View style={estilos.tutoriais}>
-      <Text>Tutoriais HTML</Text>
+      <TextInput
+      style={{
+        backgroundColor: '#FFFFFF',
+        borderStyle: 'solid',
+        borderColor: 'grey',
+        borderWidth: 1,
+        height: 40,
+        width: 380,
+        paddingLeft: 20,
+        margin: 50,
+        borderRadius: 5,
+        border: 'none'
+      }}
+
+      placeholder='Procure por um artigo específico'
+     />
+
+     <ScrollView>
+     <TouchableOpacity style={{
+        width: 380,
+        height: 100,
+        backgroundColor: 'white',
+        borderRadius: 5,
+        padding: 20,
+        margin: 20,
+      }}
+      onPress = {() => {
+        navigation.navigate('PrimeiroTutorialHtml')
+      }}
+      >
+          <Text style ={{
+            fontSize: 20
+          }}>O que é HTML?</Text>
+
+          <Text style ={{
+            color: 'grey',
+          }}>Leitura rápida.</Text>
+          
+      </TouchableOpacity> 
+
+     </ScrollView>
     </View>
+  )
+}
+
+//Tutorial 1 HTML
+const PrimeiroTutorialHtml = ({navigation, route}) => {
+  return (
+    <View style ={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      padding: 25,
+    }}>
+
+      <ScrollView>
+        <View style ={{
+        display: 'flex',
+        flexDirection: 'column',
+        padding: 25,
+      }}>
+
+          <Text style = {{
+          fontSize: 24,
+          margin: 20
+        }}>O que é HTML</Text>
+
+        <Text style = {{
+          fontSize: 20,
+          color: 'grey',
+          margin: 10
+        }}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+          Magni autem maiores iure, odio neque fugit libero blanditiis
+          ea dolorum in mollitia esse ipsum alias saepe aliquid provident
+          dolores voluptatem quas.
+        </Text>
+
+        <Text style = {{
+          fontSize: 20,
+          color: 'grey',
+          margin: 10
+        }}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+          Magni autem maiores iure, odio neque fugit libero blanditiis
+          ea dolorum in mollitia esse ipsum alias saepe aliquid provident
+          dolores voluptatem quas.
+        </Text>
+        </View>
+
+      </ScrollView>
+      
+    </View>
+  )
+}
+
+//Tutoriais CSS
+const Css = ({navigation, route}) => {
+
+  return (
+    <View style={estilos.tutoriais}>
+      <TextInput
+      style={{
+        backgroundColor: '#FFFFFF',
+        borderStyle: 'solid',
+        borderColor: 'grey',
+        borderWidth: 1,
+        height: 40,
+        width: 380,
+        paddingLeft: 20,
+        margin: 50,
+        borderRadius: 5,
+        border: 'none'
+      }}
+
+      placeholder='Procure por um artigo específico'
+     />
+
+     <ScrollView>
+     <TouchableOpacity style={{
+        width: 380,
+        height: 100,
+        backgroundColor: 'white',
+        borderRadius: 5,
+        padding: 20,
+        margin: 20,
+      }}
+      onPress = {() => {
+        alert('Estamos em manutenção!');
+      }}
+      >
+          <Text style ={{
+            fontSize: 20
+          }}>O que é CSS?</Text>
+
+          <Text style ={{
+            color: 'grey',
+          }}>Leitura rápida.</Text>
+          
+      </TouchableOpacity> 
+
+     </ScrollView>
+    </View>
+
+    
+  )
+
+}
+
+//Tutoriais JavaScript
+const Javascript = ({navigation, route}) => {
+
+  return (
+    <View style={estilos.tutoriais}>
+      <TextInput
+      style={{
+        backgroundColor: '#FFFFFF',
+        borderStyle: 'solid',
+        borderColor: 'grey',
+        borderWidth: 1,
+        height: 40,
+        width: 380,
+        paddingLeft: 20,
+        margin: 50,
+        borderRadius: 5,
+        border: 'none'
+      }}
+
+      placeholder='Procure por um artigo específico'
+     />
+
+     <ScrollView>
+     <TouchableOpacity style={{
+        width: 380,
+        height: 100,
+        backgroundColor: 'white',
+        borderRadius: 5,
+        padding: 20,
+        margin: 20,
+      }}
+      onPress = {() => {
+        alert('Estamos em manutenção!');
+      }}
+      >
+          <Text style ={{
+            fontSize: 20
+          }}>O que é JavaScript?</Text>
+
+          <Text style ={{
+            color: 'grey',
+          }}>Leitura rápida.</Text>
+          
+      </TouchableOpacity> 
+
+     </ScrollView>
+    </View>
+
+    
   )
 
 }
@@ -174,50 +443,44 @@ const estilos = StyleSheet.create({
   //Pagina Inicial
  pagina_inicial:{
    flex: 1,
-   backgrounColor: 'aqua',
+   backgrounColor: '#262626',
    display: 'flex',
+   flexDirection: 'column',
    justifyContent: 'center',
-   alignItems: 'center'
+   alignItems: 'center',
+
+   botao: {
+    width: 250,
+    borderRadius: 5,
+    overflow: 'hidden',
+    marginBottom: 50
+   }
  },
  
  //Tutorial
  tutoriais: {
    flex: 1,
-   backgroundColor: 'white',
+   backgroundColor: '#262626',
    display: 'flex',
    flexDirection: 'column',
    justifyContent: 'flex-start',
    alignItems: 'center',
 
-   tecnologia: {
-      backgroundColor: '#B2BEBF',
-      width: 380,
-      height: 380,
-      borderRadius: 5,
-      margin: 10,
+   tecnologias: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    },
+
+    html: {
+      flex: 1,
+      backgrounColor: '#262626',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'space-between',
       alignItems: 'center',
-      padding: 20,
-
-      botao: {
-        width: 200,
-        overflow: 'hidden',
-        borderRadius: 5,
-      },
-
-      titulo: {
-        marginTop: 140,
-
-        fonte: {
-          fontSize: 30
-        }
-      }
     }
-   }
-,
- 
+  },
 });
  
 
