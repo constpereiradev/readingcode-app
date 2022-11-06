@@ -22,8 +22,7 @@ const Readingcode = () => {
          options = {{
           title:'',
           headerStyle: {
-            backgroundColor: '#262626',
-            display: 'hidden'
+            backgroundColor: 'grey',
           }
         }}
         />
@@ -34,7 +33,10 @@ const Readingcode = () => {
          component={Tutoriais}
 
          options = {{
-          title: 'readingcode'
+          title: 'Tutoriais',
+          headerStyle: {
+            backgroundColor: 'grey',
+          }
          }}
        />
 
@@ -44,26 +46,50 @@ const Readingcode = () => {
         component={Html}
 
         options = {{
-          title: 'readingcode'
-        }}
+          title: '',
+          headerStyle: {
+            backgroundColor: 'grey',
+          }
+         }}
        />
 
        <Stack.Screen
        //Rota Css
         name='Css'
         component={Css}
+
+        options = {{
+          title: '',
+          headerStyle: {
+            backgroundColor: 'grey',
+          }
+         }}
        />
 
         <Stack.Screen
         //Rota Javascript
         name='Javascript'
         component={Javascript}
+
+        options = {{
+          title: '',
+          headerStyle: {
+            backgroundColor: 'grey',
+          }
+         }}
         />
 
         <Stack.Screen
         //Rota Primeiro tutorial HTML
         name='PrimeiroTutorialHtml'
         component={PrimeiroTutorialHtml}
+
+        options = {{
+          title: '',
+          headerStyle: {
+            backgroundColor: 'grey',
+          }
+         }}
        
         />
      </Stack.Navigator>
@@ -122,7 +148,7 @@ const PaginaInicial = ({ navigation }) => {
       fontStyle: 'bolder',
       textAlign: 'center',
       marginBottom: 80
-     }}>Entenda os princípios da tecnologia, comece seus projetos.</Text>
+     }}>Entenda os princípios da tecnologia e comece seus projetos.</Text>
 
      <View style={estilos.pagina_inicial.botao}>
      <Button
@@ -165,7 +191,7 @@ const Tutoriais = ({navigation, route}) => {
      <ScrollView style={{
       display: 'flex',
       flexDirection: 'column'
-     }}>
+     }} showsVerticalScrollIndicator={false}>
 
       <View style ={estilos.tutoriais.tecnologias}>
       <TouchableOpacity style={{
@@ -252,7 +278,7 @@ const Html = ({navigation, route}) => {
       placeholder='Procure por um artigo específico'
      />
 
-     <ScrollView>
+     <ScrollView showsVerticalScrollIndicator={false}>
      <TouchableOpacity style={{
         width: 380,
         height: 100,
@@ -290,7 +316,7 @@ const PrimeiroTutorialHtml = ({navigation, route}) => {
       padding: 25,
     }}>
 
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style ={{
         display: 'flex',
         flexDirection: 'column',
@@ -299,32 +325,83 @@ const PrimeiroTutorialHtml = ({navigation, route}) => {
 
           <Text style = {{
           fontSize: 24,
-          margin: 20
+          margin: 5
         }}>O que é HTML</Text>
 
         <Text style = {{
           fontSize: 20,
           color: 'grey',
-          margin: 10
+          margin: 5,
+          textAlign: 'justify'
         }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Magni autem maiores iure, odio neque fugit libero blanditiis
-          ea dolorum in mollitia esse ipsum alias saepe aliquid provident
-          dolores voluptatem quas.
+          HTML significa HiperText Markup Language,
+          traduzindo para português: Linguagem de Marcação De
+          Hipertexto. O HTML é essencial e o básico do
+          desenvolvimento web, deixando a página organizada e não
+          somente com textos soltos. Logo, o HTML serve para dar
+          sentido à sua página web.
         </Text>
 
         <Text style = {{
           fontSize: 20,
           color: 'grey',
-          margin: 10
+          margin: 5,
+          textAlign: 'justify'
         }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Magni autem maiores iure, odio neque fugit libero blanditiis
-          ea dolorum in mollitia esse ipsum alias saepe aliquid provident
-          dolores voluptatem quas.
+          O HTML pode possuir textos, imagens, vídeos, arquivos,
+          botões, caixas de inputs, entre outras grandes 
+          funcionalidades. Toda a estrutura de um site vem do HTML:
+          as fontes, organização de informações. É muito comum ouvir
+          por aí que o HTML é o esqueletodo site, e essa é a mais
+          pura verdade! Sem o HTML, as informações ficariam
+          totalmente confusas em qualquer página web, se
+          tornando apenas um arquivo .txt.
+        </Text>
+
+        <Text style = {{
+          fontSize: 20,
+          color: 'grey',
+          margin: 5,
+          textAlign: 'justify'
+        }}>
+          O HTML possui a extensão .html ou .hml, podendo ser um
+          arquivo de qualquer nome, mas, no GitHub, por exemplo, é
+          necessário haver o arquivo principal denominado "index.html",
+          para indicar à plataforma que o seu projeto se inicia naquela
+          página, mesmo que haja linkagem para muitas outras.
+        </Text>
+
+        <Text style = {{
+          fontSize: 20,
+          color: 'grey',
+          margin: 5,
+          textAlign: 'justify'
+        }}>
+          Siga para o próximo artigo para entender sobre as tags HTML, 
+          é lá onde você precisa ter maior atenção e prática.
         </Text>
         </View>
 
+        <TouchableOpacity style = {{
+          backgroundColor: '#28D967',
+          width: 300,
+          height: 40,
+          margin: 30,
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderRadius: 5,
+          overflow: 'hidden'
+        }}>
+
+          <Text style ={{
+            color: 'white',
+            textAlign: 'center',
+            fontSize: 20
+          }}>Próximo artigo</Text>
+          
+        </TouchableOpacity>
+
+        
       </ScrollView>
       
     </View>
